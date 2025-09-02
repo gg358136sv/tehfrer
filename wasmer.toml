@@ -1,5 +1,14 @@
 [dependencies]
-"wasmer/static-web-server" = "*"
+"wasmer/static-web-server" = "^1"
 
 [fs]
-public = "dist"
+"/public" = "public"
+"/settings" = "settings"
+
+[[command]]
+name = "script"
+module = "wasmer/static-web-server:webserver"
+runner = "https://webc.org/runner/wasi"
+
+[command.annotations.wasi]
+main-args = ["-w", "/settings/config.toml"]
